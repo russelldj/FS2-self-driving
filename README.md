@@ -4,11 +4,19 @@ The idea of this work is to implement limited autonomy for a full-sized car on a
 # Goal
 The problem I would like to initially tackle is driving through a slalom course. The slalom gates would be marked with [AprilTags](https://april.eecs.umich.edu/software/apriltag) and the system would be responsible for steering the car, with a safety driver applying the gas
 
+# Quickstart
+run `source setup.sh`.  
+If you want to do the planning example run `pip install -r requirements.txt`.   
+Go into the planning or perception directories and run the example scripts.   
+
 # TODOs
 As I see it, this project can be broken into a set of somewhat-distinct tasks
 
 ### Perception
 Given the image from a front-facing camera find the AprilTags and extract their location in the 2D space. This should be fairly easy as we can make the tags arbitrarily-large. Given that AprilTags are pretty robust and give orientation and a unique identifier they seem like the best choice, but it's possible there are better options out there that I don't know about.
+* I have detetection set up
+* We need to map these detections to a distance and an heading angle
+* To get the correct results, we will need to obtain the intrinsic calibration data for our camera
 
 ### Planning
 To make this work easily, there would likely need to be a hardcoded list which contains the ordering of the gates. As the vision system detects gates, the planner would need to chart a course to the next detected gate. This could probably be done with [Dubin's Paths](https://en.wikipedia.org/wiki/Dubins_path) but more sophisticated approaches like splines and bezier curves could be explored. This step would also require the creation of a decent visualizer. 
