@@ -1,3 +1,5 @@
+git submodule update --init --recursive
+mkdir perception/apriltag
 cd perception/apriltag
 mkdir build
 cd build
