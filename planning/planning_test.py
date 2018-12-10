@@ -39,6 +39,9 @@ if len(sections) == 1:
 else:
     configs = np.concatenate(sections)
 
+# write out the waypoints
+np.save("waypoints.npy",configs)
+
 # plot the results
 plt.scatter(configs[:,0], configs[:,1], label="trajectories")
 plt.scatter([p[0] for p in points], [p[1] for p in points], c='r', label="waypoints")
